@@ -25,11 +25,13 @@ import com.starrocks.catalog.Table;
 import com.starrocks.catalog.Type;
 import com.starrocks.common.DdlException;
 import com.starrocks.common.FeConstants;
+import com.starrocks.connector.HdfsEnvironment;
 import com.starrocks.connector.MockedMetadataMgr;
 import com.starrocks.connector.delta.DeltaLakeMetadata;
 import com.starrocks.connector.hive.MockedHiveMetadata;
 import com.starrocks.connector.iceberg.MockIcebergMetadata;
 import com.starrocks.connector.jdbc.MockedJDBCMetadata;
+import com.starrocks.connector.paimon.PaimonMetadata;
 import com.starrocks.qe.ConnectContext;
 import com.starrocks.server.CatalogMgr;
 import com.starrocks.server.GlobalStateMgr;
@@ -70,7 +72,7 @@ public class ConnectorPlanTestBase extends PlanTestBase {
         mockJDBCCatalogImpl(metadataMgr);
     }
 
-    public static void mockCatalog(ConnectContext ctx) throws DdlException {
+    public static void mockCatalog(ConnectContext ctx) throws Exception {
         GlobalStateMgr gsmMgr = ctx.getGlobalStateMgr();
         MockedMetadataMgr metadataMgr = new MockedMetadataMgr(gsmMgr.getLocalMetastore(), gsmMgr.getConnectorMgr());
         gsmMgr.setMetadataMgr(metadataMgr);

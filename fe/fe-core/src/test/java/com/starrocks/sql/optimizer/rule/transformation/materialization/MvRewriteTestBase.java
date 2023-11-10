@@ -81,11 +81,7 @@ public class MvRewriteTestBase {
         Config.tablet_sched_checker_interval_seconds = 1;
         Config.tablet_sched_repair_delay_factor_second = 1;
         Config.enable_new_publish_mechanism = true;
-<<<<<<< HEAD
-=======
         Config.alter_scheduler_interval_millisecond = 100;
-        FeConstants.enablePruneEmptyOutputScan = false;
->>>>>>> 9bdcdf8608 ([UT] refactor mv ut (#34128))
 
         // build a small cache for test
         Config.mv_plan_cache_max_size = 10;
